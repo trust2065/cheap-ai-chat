@@ -1,6 +1,7 @@
 'use client';
 
 import { useChat } from 'ai/react';
+import Markdown from 'react-markdown';
 
 export default function Home() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
@@ -11,7 +12,7 @@ export default function Home() {
         {messages.map((message) => (
           <div key={message.id} className="whitespace-pre-wrap">
             {message.role === 'user' ? 'User:' : 'AI:'}
-            {message.content}
+            <Markdown>{message.content}</Markdown>
           </div>
         ))}
         <form onSubmit={handleSubmit}>
